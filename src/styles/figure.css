@@ -1,0 +1,568 @@
+/* ------------------------------------------------------------------ */
+/* Figure card                                                         */
+/* ------------------------------------------------------------------ */
+
+.iso-figure {
+  margin: clamp(2rem, 4vw, 3rem) 0 0;
+}
+
+.iso-plate {
+  position: relative;
+  padding: 0;
+  border: 1px solid var(--hairline-strong);
+  background: var(--paper-2);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  --anatomy-card: var(--paper-2);
+}
+
+.iso-plate-corners {
+  position: static;
+  inset: auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.28rem 2rem;
+  padding: 0.85rem clamp(1rem, 2.4vw, 1.75rem);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.iso-plate-corner {
+  position: static;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  line-height: 1.35;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  white-space: normal;
+}
+
+.iso-plate-corner[data-corner="fig"] {
+  color: var(--ink);
+  letter-spacing: 0.12em;
+}
+
+.iso-plate-corner[data-corner="title"] {
+  justify-self: end;
+  text-align: right;
+}
+
+.iso-plate-corner[data-corner="hint"] {
+  letter-spacing: 0.06em;
+}
+
+.iso-plate-corner[data-corner="readout"] {
+  justify-self: end;
+  text-align: right;
+  color: var(--amber-deep);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.iso-stage {
+  padding: 0 clamp(0.2rem, 1vw, 0.6rem);
+  background: var(--paper-2);
+}
+
+.iso-stage svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.station-buttons {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  border-top: 1px solid var(--hairline-strong);
+  background: var(--paper-3);
+}
+
+.station-button {
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+  border: 0;
+  border-right: 1px solid var(--hairline);
+  background: transparent;
+  padding: 0.7rem clamp(0.45rem, 1vw, 0.85rem) 0.78rem;
+  text-align: left;
+  color: var(--ink-2);
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.station-button:last-child {
+  border-right: 0;
+}
+
+.station-button:hover {
+  background: var(--paper-2);
+  color: var(--ink);
+}
+
+.station-button__num {
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+}
+
+.station-button__label {
+  font-family: var(--font-body);
+  font-size: clamp(0.68rem, 0.9vw, 0.82rem);
+  line-height: 1.2;
+}
+
+.station-button[aria-pressed="true"] {
+  background: var(--paper-2);
+  color: var(--ink);
+  box-shadow: inset 0 2px 0 var(--amber);
+}
+
+.station-button[aria-pressed="true"] .station-button__num {
+  color: var(--amber-deep);
+}
+
+.station-button:focus-visible {
+  position: relative;
+  z-index: 2;
+}
+
+.station-detail {
+  display: grid;
+  grid-template-columns: minmax(9rem, 0.3fr) minmax(0, 1fr);
+  grid-template-rows: auto auto 1fr;
+  gap: 0.25rem 2rem;
+  padding: 1.05rem clamp(1rem, 2.4vw, 1.75rem) 1.2rem;
+  border-top: 1px solid var(--hairline);
+  background: var(--paper-2);
+  min-height: 7.4rem;
+}
+
+.station-detail__eyebrow {
+  grid-column: 1;
+  grid-row: 1;
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--amber-deep);
+}
+
+.station-detail__title {
+  grid-column: 1;
+  grid-row: 2;
+  font-family: var(--font-display);
+  font-size: 1.28rem;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.station-detail__copy {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  margin: 0;
+  max-width: 72ch;
+  font-size: 0.86rem;
+  line-height: 1.55;
+  color: var(--ink-2);
+}
+
+.station-detail .text-link {
+  grid-column: 2;
+  grid-row: 3;
+  justify-self: start;
+  align-self: end;
+  margin-top: 0.35rem;
+  font-size: 0.62rem;
+}
+
+/* ------------------------------------------------------------------ */
+/* Anatomy theme: warm paper and ink                                   */
+/* ------------------------------------------------------------------ */
+
+.iso[data-theme="light"] {
+  --anatomy-page: #f2ece1;
+  --anatomy-card: var(--paper-2);
+  --anatomy-text: #423c33;
+  --anatomy-strong: #201d18;
+  --anatomy-muted: #7b7264;
+  --anatomy-paper: #faf5ea;
+  --anatomy-face: #fffdf7;
+  --anatomy-top: #fffdf7;
+  --anatomy-shade-0: #9d907f;
+  --anatomy-shade-1: #ada08e;
+  --anatomy-shade-2: #bdb19f;
+  --anatomy-shade-3: #cec2b0;
+  --anatomy-lit-top: #f8dfb8;
+  --anatomy-lit-shade: #dca15a;
+  --anatomy-hi: #1e1a15;
+  --anatomy-mid: #5f574b;
+  --anatomy-lo: #8f8373;
+  --anatomy-faint: #b9ad9b;
+  --anatomy-lit: #b85c12;
+  --anatomy-halo: #6b5333;
+  --anatomy-halo-opacity: 0.15;
+  --anatomy-dot: #6e6558;
+  --anatomy-weight: 0.8px;
+  --anatomy-ease: cubic-bezier(0.32, 0.72, 0, 1);
+
+  --station-accent: #b85c12;
+  --station-accent-soft: #e0a45c;
+  --station-accent-deep: #87400b;
+  --station-edge: #b85c12;
+
+  --strata-deep-top: #9b8c7c;
+  --strata-deep-0: #75685a;
+  --strata-deep-1: #817466;
+  --strata-deep-2: #8c7f71;
+  --strata-pay-top: #c9975a;
+  --strata-pay-0: #a86f34;
+  --strata-pay-1: #b47b3f;
+  --strata-pay-2: #be894d;
+  --strata-over-top: #e7dcc8;
+  --strata-over-0: #c4b49c;
+  --strata-over-1: #cebea6;
+  --strata-over-2: #d8c8b0;
+  --strata-sand-top: #e3c99d;
+  --strata-sand-0: #c3a477;
+  --strata-sand-1: #cfb286;
+  --strata-sand-2: #d9bd92;
+  --strata-silt-top: #cfc4ae;
+  --strata-silt-0: #a99d88;
+  --strata-silt-1: #b5a994;
+  --strata-silt-2: #c1b5a0;
+  --strata-shale-top: #978b78;
+  --strata-shale-0: #75695a;
+  --strata-shale-1: #817564;
+  --strata-shale-2: #8d816f;
+  --strata-cap-top: #b4a284;
+  --strata-cap-0: #8f7d63;
+  --strata-cap-1: #9b896e;
+  --strata-cap-2: #a7957a;
+
+  --metal-top: #f8f5ee;
+  --metal-0: #948c7f;
+  --metal-1: #a49c8f;
+  --metal-2: #b4aca0;
+  --metal-3: #c6beb2;
+  --concrete-top: #ddd2bf;
+  --concrete-0: #8f8370;
+  --concrete-1: #9d917e;
+  --concrete-2: #ada18e;
+  --concrete-3: #c0b4a0;
+}
+
+.iso[data-theme="dark"] {
+  --anatomy-page: #16130f;
+  --anatomy-card: var(--paper-2);
+  --anatomy-text: #d4c6b1;
+  --anatomy-strong: #efe5d3;
+  --anatomy-muted: #a99b87;
+  --anatomy-paper: #1e1a14;
+  --anatomy-face: #2a231a;
+  --anatomy-top: #30291f;
+  --anatomy-shade-0: #17130e;
+  --anatomy-shade-1: #1c1812;
+  --anatomy-shade-2: #211c15;
+  --anatomy-shade-3: #262017;
+  --anatomy-lit-top: #4a3922;
+  --anatomy-lit-shade: #7a5424;
+  --anatomy-hi: #efe5d3;
+  --anatomy-mid: #a59782;
+  --anatomy-lo: #6d6252;
+  --anatomy-faint: #3d362c;
+  --anatomy-lit: #e2a35b;
+  --anatomy-halo: #000000;
+  --anatomy-halo-opacity: 0.55;
+  --anatomy-dot: #b5a68e;
+  --anatomy-weight: 0.7px;
+
+  --station-accent: #e2a35b;
+  --station-accent-soft: #f0bd7d;
+  --station-accent-deep: #b87324;
+  --station-edge: #e2a35b;
+
+  --strata-deep-top: #2d261d;
+  --strata-deep-0: #1d1812;
+  --strata-deep-1: #231d16;
+  --strata-deep-2: #29221a;
+  --strata-pay-top: #5a3a18;
+  --strata-pay-0: #3d2710;
+  --strata-pay-1: #472d13;
+  --strata-pay-2: #513416;
+  --strata-over-top: #30291f;
+  --strata-over-0: #201b15;
+  --strata-over-1: #262017;
+  --strata-over-2: #2c251c;
+  --strata-sand-top: #4b3b26;
+  --strata-sand-0: #312716;
+  --strata-sand-1: #382c1a;
+  --strata-sand-2: #40321e;
+  --strata-silt-top: #3c352b;
+  --strata-silt-0: #262119;
+  --strata-silt-1: #2b261e;
+  --strata-silt-2: #322c23;
+  --strata-shale-top: #2f2921;
+  --strata-shale-0: #1e1a15;
+  --strata-shale-1: #231f19;
+  --strata-shale-2: #29241d;
+  --strata-cap-top: #3a3024;
+  --strata-cap-0: #292117;
+  --strata-cap-1: #2f261b;
+  --strata-cap-2: #352b1f;
+
+  --metal-top: #312b22;
+  --metal-0: #1a1611;
+  --metal-1: #1f1b15;
+  --metal-2: #241f18;
+  --metal-3: #29231b;
+  --concrete-top: #2e2820;
+  --concrete-0: #191510;
+  --concrete-1: #1e1913;
+  --concrete-2: #231e17;
+  --concrete-3: #28221a;
+}
+
+.strata-deep .iso-top { fill: var(--strata-deep-top); }
+.strata-deep .iso-shade { fill: var(--strata-deep-2); }
+.strata-deep .iso-shade[data-shade="0"] { fill: var(--strata-deep-0); }
+.strata-deep .iso-shade[data-shade="1"] { fill: var(--strata-deep-1); }
+
+.strata-pay .iso-top { fill: var(--strata-pay-top); }
+.strata-pay .iso-shade { fill: var(--strata-pay-2); }
+.strata-pay .iso-shade[data-shade="0"] { fill: var(--strata-pay-0); }
+.strata-pay .iso-shade[data-shade="1"] { fill: var(--strata-pay-1); }
+
+.strata-over .iso-top { fill: var(--strata-over-top); }
+.strata-over .iso-shade { fill: var(--strata-over-2); }
+.strata-over .iso-shade[data-shade="0"] { fill: var(--strata-over-0); }
+.strata-over .iso-shade[data-shade="1"] { fill: var(--strata-over-1); }
+
+.strata-sand .iso-top { fill: var(--strata-sand-top); }
+.strata-sand .iso-shade { fill: var(--strata-sand-2); }
+.strata-sand .iso-shade[data-shade="0"] { fill: var(--strata-sand-0); }
+.strata-sand .iso-shade[data-shade="1"] { fill: var(--strata-sand-1); }
+
+.strata-silt .iso-top { fill: var(--strata-silt-top); }
+.strata-silt .iso-shade { fill: var(--strata-silt-2); }
+.strata-silt .iso-shade[data-shade="0"] { fill: var(--strata-silt-0); }
+.strata-silt .iso-shade[data-shade="1"] { fill: var(--strata-silt-1); }
+
+.strata-shale .iso-top { fill: var(--strata-shale-top); }
+.strata-shale .iso-shade { fill: var(--strata-shale-2); }
+.strata-shale .iso-shade[data-shade="0"] { fill: var(--strata-shale-0); }
+.strata-shale .iso-shade[data-shade="1"] { fill: var(--strata-shale-1); }
+
+.strata-cap .iso-top { fill: var(--strata-cap-top); }
+.strata-cap .iso-shade { fill: var(--strata-cap-2); }
+.strata-cap .iso-shade[data-shade="0"] { fill: var(--strata-cap-0); }
+.strata-cap .iso-shade[data-shade="1"] { fill: var(--strata-cap-1); }
+
+.metal .iso-top { fill: var(--metal-top); }
+.metal .iso-shade { fill: var(--metal-2); }
+.metal .iso-shade[data-shade="0"] { fill: var(--metal-0); }
+.metal .iso-shade[data-shade="1"] { fill: var(--metal-1); }
+.metal .iso-shade[data-shade="3"] { fill: var(--metal-3); }
+
+.concrete .iso-top { fill: var(--concrete-top); }
+.concrete .iso-shade { fill: var(--concrete-2); }
+.concrete .iso-shade[data-shade="0"] { fill: var(--concrete-0); }
+.concrete .iso-shade[data-shade="1"] { fill: var(--concrete-1); }
+.concrete .iso-shade[data-shade="3"] { fill: var(--concrete-3); }
+
+/* The station highlight is the only amber in the drawing. */
+.station {
+  transition: opacity 360ms var(--anatomy-ease);
+}
+
+.station.is-dim {
+  opacity: 0.38;
+}
+
+.station.is-active .iso-edge {
+  stroke: var(--station-edge);
+  stroke-width: 1px;
+}
+
+.station.is-active .st-body .iso-top {
+  fill: color-mix(in srgb, var(--anatomy-top) 68%, var(--station-accent-soft) 32%);
+}
+
+.station.is-active .st-body .iso-shade {
+  fill: color-mix(in srgb, var(--anatomy-shade-2) 72%, var(--station-accent) 28%);
+}
+
+.station.is-active .st-accent .iso-top {
+  fill: var(--station-accent-soft);
+}
+
+.station.is-active .st-accent .iso-shade {
+  fill: var(--station-accent);
+}
+
+.station.is-active .st-accent .iso-shade[data-shade="0"] {
+  fill: var(--station-accent-deep);
+}
+
+.station.is-active .st-accent .iso-edge {
+  stroke: var(--station-accent-deep);
+}
+
+.station.is-active .st-accent .tb-body {
+  fill: var(--station-accent);
+}
+
+.station.is-active .st-accent .tb-shine {
+  fill: var(--station-accent-soft);
+}
+
+.station.is-active .st-accent .tb-shade {
+  fill: var(--station-accent-deep);
+}
+
+.station.is-active .st-accent .tb-edge {
+  stroke: var(--station-accent-deep);
+}
+
+.station.is-active .st-accent .iso-fill {
+  fill: var(--anatomy-paper);
+}
+
+/* Flow traces: dashed, thin, paused offscreen. */
+.flow-line {
+  animation-play-state: paused;
+  opacity: 0.55;
+}
+
+[data-inview="true"] .flow-line {
+  animation-play-state: running;
+}
+
+.flow-steam {
+  stroke-dasharray: 1.5 5.5;
+  animation-duration: 2100ms;
+}
+
+.flow-oil {
+  stroke-dasharray: 5 5;
+  animation-duration: 2700ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flow-line {
+    animation: none !important;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Legend and caption                                                  */
+/* ------------------------------------------------------------------ */
+
+.iso-legend {
+  margin: 0.9rem 0 0;
+  padding: 0;
+  border: 0;
+  display: grid;
+  gap: 0.6rem;
+  color: var(--muted);
+  font-size: 0.8rem;
+  line-height: 1.55;
+}
+
+.iso-keys {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.02em;
+}
+
+.iso-key {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+.iso-caption {
+  display: block;
+  max-width: 86ch;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: var(--muted);
+}
+
+.iso-caption strong {
+  color: var(--ink-2);
+  font-weight: 500;
+}
+
+/* ------------------------------------------------------------------ */
+/* Responsive                                                          */
+/* ------------------------------------------------------------------ */
+
+@media (max-width: 800px) {
+  .station-detail {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto;
+    gap: 0.2rem;
+    min-height: 0;
+  }
+
+  .station-detail__eyebrow,
+  .station-detail__title,
+  .station-detail__copy,
+  .station-detail .text-link {
+    grid-column: 1;
+    grid-row: auto;
+  }
+
+  .station-detail__copy {
+    margin: 0.3rem 0 0.5rem;
+  }
+}
+
+@media (max-width: 620px) {
+  .iso-plate-corners {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.2rem;
+    padding: 0.7rem 0.85rem;
+  }
+
+  .iso-plate-corner[data-corner="title"],
+  .iso-plate-corner[data-corner="readout"] {
+    justify-self: start;
+    text-align: left;
+  }
+
+  .iso-plate-corner[data-corner="title"] {
+    display: none;
+  }
+
+  .station-buttons {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .station-button:nth-child(3n) {
+    border-right: 0;
+  }
+
+  .station-button:nth-child(-n + 3) {
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .station-button {
+    padding: 0.6rem 0.7rem 0.66rem;
+  }
+
+  .station-detail {
+    padding: 0.9rem 0.85rem 1rem;
+  }
+
+  .iso-stage {
+    padding: 0;
+  }
+}

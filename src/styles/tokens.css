@@ -1,0 +1,65 @@
+:root {
+  color-scheme: light;
+  --paper: #f2ece1;
+  --paper-2: #faf5ea;
+  --paper-3: #efe6d7;
+  --ink: #201d18;
+  --ink-2: #423c33;
+  --muted: #6e6558;
+  --muted-2: #8b8070;
+  --hairline: #d4c8b6;
+  --hairline-strong: #b8a994;
+  --amber: #b85c12;
+  --amber-deep: #87400b;
+  --amber-soft: #d98a2b;
+  --amber-wash: #f4e2c8;
+  --teal: #1f6f6a;
+  --teal-deep: #14524f;
+  --teal-wash: #d9e8e4;
+  --danger: #a52a1e;
+  --shadow: 0 1px 0 rgba(32, 29, 24, 0.06);
+
+  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  --font-body: "IBM Plex Sans", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+
+  --step--2: 0.72rem;
+  --step--1: 0.84rem;
+  --step-0: 1.0625rem;
+  --step-1: clamp(1.18rem, 1.4vw, 1.35rem);
+  --step-2: clamp(1.55rem, 2.2vw, 2rem);
+  --step-3: clamp(2.1rem, 3.4vw, 3.15rem);
+  --step-4: clamp(2.6rem, 5vw, 4.8rem);
+  --step-5: clamp(3.2rem, 7.2vw, 6.6rem);
+
+  --measure: 66ch;
+  --gutter: clamp(1.15rem, 4vw, 3.25rem);
+  --section-pad: clamp(4rem, 8vw, 7.5rem);
+  --offset: clamp(0rem, 7vw, 6.5rem);
+  --max: 1200px;
+
+  --focus: 0 0 0 3px var(--paper), 0 0 0 5px var(--amber);
+  --ease: cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #16130f;
+  --paper-2: #1e1a14;
+  --paper-3: #262119;
+  --ink: #efe5d3;
+  --ink-2: #d4c6b1;
+  --muted: #a99b87;
+  --muted-2: #867a69;
+  --hairline: #3b342a;
+  --hairline-strong: #574c3e;
+  --amber: #e2a35b;
+  --amber-deep: #f0bd7d;
+  --amber-soft: #efa75a;
+  --amber-wash: #33271a;
+  --teal: #74c6bb;
+  --teal-deep: #9bd8d0;
+  --teal-wash: #1c302d;
+  --danger: #f08b7a;
+  --shadow: 0 1px 0 rgba(0, 0, 0, 0.3);
+}

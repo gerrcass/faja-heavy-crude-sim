@@ -1,0 +1,31 @@
+{
+  "name": "faja-field-guide",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Faja 8° — an interactive field guide to extra-heavy crude production in the Orinoco Belt.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4173 --strictPort",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "check": "npm run typecheck && npm run test && npm run build",
+    "qa": "npm run build && node tools/qa.mjs",
+    "capture": "npm run build && node tools/capture-page.mjs",
+    "lines": "node tools/anatomy/lines.mjs"
+  },
+  "dependencies": {
+    "@fontsource/fraunces": "^5.3.0",
+    "@fontsource/ibm-plex-mono": "^5.3.0",
+    "@fontsource/ibm-plex-sans": "^5.3.0"
+  },
+  "devDependencies": {
+    "typescript": "~5.9.3",
+    "vite": "^7.3.7",
+    "vitest": "^3.2.7"
+  },
+  "allowScripts": {
+    "esbuild@0.28.2": true
+  }
+}
