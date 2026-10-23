@@ -17,6 +17,7 @@ npm run dev       # local page
 npm run check     # typecheck + unit tests + production build
 npm run qa        # headless browser checks on dist/
 npm run capture   # desktop/mobile/light/dark screenshots
+npm run icons     # regenerate favicon PNGs and the OG image
 ```
 
 ## Where things live
@@ -53,7 +54,7 @@ Build the object with the Anatomy kit, not with hand-placed boxes: `slabOf`, `cy
 
 ## Delivery
 
-Work on a feature branch. The PR body uses the `/pr` template and closes the spec and every ticket. Squash-merge to `main`, delete the branch, verify the Pages deployment, and leave no open issues or PRs. The README must carry the live link and a screenshot captured from the built page.
+Work on a feature branch. Commit early and at the end of every ticket; an uncommitted worktree is not a deliverable. A delegated session owns its branch until it reports, and the parent reviews after that report rather than editing alongside it. The PR body uses the `/pr` template and closes the spec and every ticket. Squash-merge to `main`, delete the branch, verify the Pages deployment, and leave no open issues or PRs. The README must carry the live link and a screenshot captured from the built page. Read the latest note in `docs/retro/` before starting a new run.
 
 ## Agent skills
 
