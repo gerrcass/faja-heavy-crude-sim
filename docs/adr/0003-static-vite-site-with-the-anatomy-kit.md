@@ -1,0 +1,3 @@
+# Static Vite site with the Anatomy kit
+
+We will build a static Vite + TypeScript site and vendor the MIT-licensed Anatomy isometric kit into the project. The site has no backend, no accounts and no runtime data service; all interaction is client-side, and deployment is GitHub Pages via Actions. This keeps the artifact inspectable, fast and durable, and lets the figure be generated from the same geometry code that draws it, which is the Anatomy skill's core discipline. A React framework was rejected because the page is one document with a handful of interactive regions, not an application with routing or shared state.

@@ -1,0 +1,3 @@
+# Technical editorial visual language
+
+The site will look like a field manual printed on warm paper: a light "core sample" palette, Fraunces display type, IBM Plex Sans body text and IBM Plex Mono for measurements, hairline rules, figure numbers and a single amber accent. Dark mode is a second ink-on-black reading mode, not a neon dashboard. The isometric figure uses the Anatomy four-tone shading with a warm paper substrate and amber "lit" parts. This is a deliberate rejection of the generic dark SaaS landing page: the subject is a physical system, and the visual language should feel like an instrument manual you could carry to the field.
