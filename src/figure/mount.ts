@@ -75,9 +75,6 @@ export function mountFigure(figure: HTMLElement): void {
     if (station) {
       readout.textContent = `${station.number} · ${station.label} — ${station.metric}`;
       renderDetail(detail, id);
-      if (announce) {
-        detail.setAttribute("aria-live", "polite");
-      }
     }
   };
 

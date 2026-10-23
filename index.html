@@ -9,10 +9,13 @@
       content="An interactive field guide to extra-heavy crude production in the Orinoco Belt: the reservoir, cold production, steam, lift, separation, blending and upgrading, with an illustrative systems model."
     />
     <meta name="theme-color" content="#f2ece1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="canonical" href="https://gerrcass.github.io/faja-heavy-crude-sim/" />
+    <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="%BASE_URL%favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="%BASE_URL%apple-touch-icon.png" />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Faja 8°" />
     <meta property="og:title" content="Faja 8° — a field guide to extra-heavy crude" />
     <meta
       property="og:description"
@@ -20,10 +23,26 @@
     />
     <meta property="og:url" content="https://gerrcass.github.io/faja-heavy-crude-sim/" />
     <meta property="og:image" content="https://gerrcass.github.io/faja-heavy-crude-sim/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Faja 8°" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Faja 8°: The oil is there. The problem is moving it." />
     <meta name="twitter:card" content="summary_large_image" />
+    <link rel="canonical" href="https://gerrcass.github.io/faja-heavy-crude-sim/" />
+    <meta name="twitter:title" content="Faja 8° — a field guide to extra-heavy crude" />
+    <meta
+      name="twitter:description"
+      content="An interactive field guide to the Orinoco Belt: reservoir, cold production, steam, lift, blending and upgrading."
+    />
+    <meta name="twitter:image" content="https://gerrcass.github.io/faja-heavy-crude-sim/og.png" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to the field guide</a>
+    <noscript>
+      <p class="no-js-note">The cutaway and control desk need JavaScript. The field guide, glossary and sources remain readable below.</p>
+    </noscript>
 
     <header class="masthead" data-masthead>
       <div class="masthead__inner">
@@ -67,27 +86,27 @@
               <div>
                 <dt>Oil in place</dt>
                 <dd>~1.3 <span>trillion bbl</span></dd>
-                <p class="specimen__source">median; range 0.9–1.4 · <a href="https://pubs.usgs.gov/fs/2009/3028/">USGS 2009</a></p>
+                <dd class="specimen__source">median; range 0.9–1.4 · <a href="https://pubs.usgs.gov/fs/2009/3028/">USGS 2009</a></dd>
               </div>
               <div>
                 <dt>Technically recoverable</dt>
                 <dd>513 <span>billion bbl</span></dd>
-                <p class="specimen__source">mean; 380–652 · <a href="https://pubs.usgs.gov/fs/2009/3028/">USGS 2009</a></p>
+                <dd class="specimen__source">mean; 380–652 · <a href="https://pubs.usgs.gov/fs/2009/3028/">USGS 2009</a></dd>
               </div>
               <div>
                 <dt>Reservoir depth</dt>
                 <dd>150–1,400 <span>m</span></dd>
-                <p class="specimen__source"><a href="https://pubs.usgs.gov/fs/2009/3028/">USGS 2009</a></p>
+                <dd class="specimen__source"><a href="https://pubs.usgs.gov/fs/2009/3028/">USGS 2009</a></dd>
               </div>
               <div>
                 <dt>Gravity</dt>
                 <dd>4–16° <span>API</span></dd>
-                <p class="specimen__source">typically 8–10° · <a href="https://pubs.usgs.gov/fs/2009/3028/">USGS 2009</a></p>
+                <dd class="specimen__source">typically 8–10° · <a href="https://pubs.usgs.gov/fs/2009/3028/">USGS 2009</a></dd>
               </div>
               <div>
                 <dt>Viscosity</dt>
                 <dd>2,000–8,000 <span>cP</span></dd>
-                <p class="specimen__source">at reservoir conditions · <a href="https://doi.org/10.2118/165061-MS">SPE 165061</a></p>
+                <dd class="specimen__source">at reservoir conditions · <a href="https://doi.org/10.2118/165061-MS">SPE 165061</a></dd>
               </div>
             </dl>
             <a class="text-link specimen__jump" href="#deposit">Follow the barrel <span aria-hidden="true">↓</span></a>
@@ -136,7 +155,7 @@
                 <span class="station-button__num">06</span><span class="station-button__label">Upgrade</span>
               </button>
             </div>
-            <div class="station-detail" data-station-detail aria-live="polite">
+            <div class="station-detail" data-station-detail>
               <p class="station-detail__eyebrow">Six stations</p>
               <h3 class="station-detail__title">Select a station</h3>
               <p class="station-detail__copy">Light one part of the train to see what it does. The drawing stays presentational; the buttons carry the state.</p>
@@ -151,7 +170,7 @@
             <span class="iso-caption" id="figure-caption-title">
               <strong>Fig. 1 · A representative production train, not a specific field.</strong>
               The reservoir is a cutaway specimen: layered Oficina sands with two horizontal wells. The pad
-              carries three Christmas trees and a progressing-cavity-pump drive head. Steam, separation, blending
+              carries Christmas trees and a progressing-cavity-pump drive head. Steam, separation, blending
               and upgrading follow in process order, joined by pipework. Amber marks the selected station; the
               dashed traces indicate steam and oil routes, not measured flow.
             </span>
@@ -267,7 +286,7 @@
             limited: 6–9% recovery in the Faja is a common range. That is enough to justify the wells, but not
             enough to drain the resource. Thermal EOR is the next step, not an optional extra.
           </p>
-          <p class="figure-ref">The well pad in <a href="#figure">Fig. 1</a> carries three Christmas trees and a PCP drive head.</p>
+          <p class="figure-ref">The well pad in <a href="#figure">Fig. 1</a> carries Christmas trees and a PCP drive head.</p>
         </div>
       </section>
 
@@ -303,7 +322,7 @@
           <p>
             The system-level efficiency number is the <a href="#term-sor">steam-oil ratio</a>: barrels of steam,
             measured as cold-water equivalent, per barrel of oil produced. CSS projects commonly run in the 3–5
-            range; poor projects run higher. SOR drives fuel gas, water treatment and CO₂. It is the number to watch
+            range (<a class="cite" href="https://en.wikipedia.org/wiki/Steam_injection_(oil_industry)">steam injection literature</a>); poor projects run higher. SOR drives fuel gas, water treatment and CO₂. It is the number to watch
             when someone claims a thermal process is efficient.
           </p>
           <p>
@@ -431,7 +450,7 @@
           <p class="dropcap">
             Extra-heavy crude cannot meet a pipeline viscosity specification on its own. The usual answer is
             <a href="#term-diluent">diluent</a>: naphtha or a light hydrocarbon, blended into the crude at
-            20–35 vol% to reach a pumpable <a href="#term-blend">blend</a>. The blend’s API gravity and viscosity
+            20–35 vol% to reach a pumpable <a href="#term-blend">blend</a> (<a class="cite" href="https://doi.org/10.2118/69433-MS">SPE 69433</a>). The blend’s API gravity and viscosity
             become the custody-transfer specifications, so the mixer is a commercial instrument as much as a piece
             of pipe.
           </p>
@@ -494,7 +513,7 @@
             than a barrel of extra-heavy crude, but the carbon and the contaminants have moved, not vanished.
           </p>
           <p>
-            Export blends are designated grades. Venezuela’s Merey blend is a heavy sour grade of roughly 16° API;
+            Export blends are designated grades. Venezuela’s Merey blend is a heavy sour grade of roughly 16° API (<a class="cite" href="https://www.eia.gov/international/">EIA</a>);
             its exact gravity and sulfur move with the blend. The site says “roughly” for a reason.
           </p>
           <p class="figure-ref">The upgrader module in <a href="#figure">Fig. 1</a> groups the fractionation columns, coke drums, hydrotreater and flare.</p>
@@ -567,11 +586,12 @@
               <input id="pump-speed" type="range" min="20" max="60" step="1" value="58" data-input="pumpSpeed" />
               <p class="lever__hint">PCP speed. Capacity is finite; above it, the pump is the bottleneck.</p>
             </div>
+            <p class="desk__hint">Presets are coherent operating points, not an optimisation. Move a lever to leave the preset.</p>
           </div>
 
           <div class="desk__outputs">
             <p class="constraint" data-constraint role="status" aria-live="polite">Within the model’s operating envelope.</p>
-            <dl class="readouts" aria-live="polite" aria-atomic="true">
+            <dl class="readouts">
               <div><dt>Oil rate</dt><dd><span data-output="oilRate">558</span><span class="readout__unit">bbl/d</span></dd></div>
               <div><dt>Steam-oil ratio</dt><dd><span data-output="sor">3.04</span><span class="readout__unit">bbl/bbl</span></dd></div>
               <div><dt>Blend viscosity</dt><dd><span data-output="blendViscosity">280</span><span class="readout__unit">cSt @ 50 °C</span></dd></div>
@@ -815,7 +835,7 @@
             <a href="https://doi.org/10.2118/184968-MS">doi.org/10.2118/184968-MS</a>
           </li>
           <li>
-            Petrozuata well count from <em>Petrozuata: A Case Study</em>, SPE 78969.
+            Petrozuata well count and well performance from <em>Horizontal Wells Pressure Build Up Analysis in the Orinoco Heavy Oil Belt</em>, SPE 78969.
             <a href="https://doi.org/10.2118/78969-MS">doi.org/10.2118/78969-MS</a>
           </li>
           <li>

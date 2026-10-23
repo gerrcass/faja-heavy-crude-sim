@@ -25,6 +25,8 @@ export function mountSimulator(root: HTMLElement): void {
   const constraint = root.querySelector<HTMLElement>("[data-constraint]");
   const constraintList = root.querySelector<HTMLElement>("[data-constraints]");
   const chart = root.querySelector<HTMLElement>("[data-chart]");
+  const summary = root.querySelector<HTMLElement>("[data-sim-summary]");
+  let announceTimer = 0;
   const lever = (key: string) => root.querySelector<HTMLElement>(`[data-lever="${key}"]`);
   const valueOut = (key: string) => root.querySelector<HTMLElement>(`[data-value="${key}"]`);
   const output = (key: string) => root.querySelector<HTMLElement>(`[data-output="${key}"]`);
@@ -59,9 +61,10 @@ export function mountSimulator(root: HTMLElement): void {
   };
 
   const chartSvg = (out: FieldOutput, input: FieldInput): string => {
-    const W = 640;
-    const H = 248;
-    const m = { l: 56, r: 22, t: 22, b: 38 };
+    const narrow = window.matchMedia("(max-width: 720px)").matches;
+    const W = narrow ? 460 : 640;
+    const H = narrow ? 230 : 248;
+    const m = narrow ? { l: 48, r: 16, t: 20, b: 34 } : { l: 56, r: 22, t: 22, b: 38 };
     const xMin = LIMITS.diluent[0];
     const xMax = LIMITS.diluent[1];
     const yMin = 150;
@@ -87,19 +90,18 @@ export function mountSimulator(root: HTMLElement): void {
     const specY = y(350).toFixed(1);
     const markerX = x(clamp(input.diluent, xMin, xMax));
     const markerY = y(clamp(out.blendViscosity, yMin + 1, yMax - 1));
-    const markerLabelY = markerY < m.t + 34 ? markerY + 18 : markerY - 12;
+    const markerLabelY = out.blendViscosity < 350 || markerY < m.t + 34 ? markerY + 18 : markerY - 12;
     const markerLabelX = markerX > W - 108 ? markerX - 8 : markerX + 10;
     const anchor = markerX > W - 108 ? "end" : "start";
     const marker = `<circle class="chart-marker" cx="${markerX.toFixed(1)}" cy="${markerY.toFixed(1)}" r="4.2"/><circle class="chart-marker-fill" cx="${markerX.toFixed(1)}" cy="${markerY.toFixed(1)}" r="1.8"/><text class="chart-marker-label" x="${markerLabelX.toFixed(1)}" y="${markerLabelY.toFixed(1)}" text-anchor="${anchor}">${nf(out.blendViscosity)} cSt · ${nf(input.diluent)}%</text>`;
 
-    return `<svg viewBox="0 0 ${W} ${H}" aria-hidden="true" focusable="false">
+    return `<svg class="chart-svg${narrow ? " chart-narrow" : ""}" viewBox="0 0 ${W} ${H}" aria-hidden="true" focusable="false">
       <text class="chart-label" x="${m.l}" y="12">cSt at 50 °C · log scale</text>
       ${grid}
       ${xTicks}
       <line class="chart-axis" x1="${m.l}" y1="${H - m.b}" x2="${W - m.r}" y2="${H - m.b}"/>
       <line class="chart-axis" x1="${m.l}" y1="${m.t}" x2="${m.l}" y2="${H - m.b}"/>
       <line class="chart-spec" x1="${m.l}" y1="${specY}" x2="${W - m.r}" y2="${specY}"/>
-      <text class="chart-value" x="${W - m.r}" y="${Number(specY) - 5}" text-anchor="end">350 cSt reference</text>
       <path class="chart-curve" d="${path}"/>
       ${marker}
       <text class="chart-label" x="${W - m.r}" y="${H - 8}" text-anchor="end">diluent, vol%</text>
@@ -164,6 +166,13 @@ export function mountSimulator(root: HTMLElement): void {
       `Blend viscosity against diluent fraction. The model gives ${nf(out.blendViscosity)} centistokes at ${input.diluent} percent diluent, against a 350 centistoke reference. Viscosity falls from ${nf(viscosityCurve(input, 10, 40, 2)[0].viscosity)} centistokes at 10 percent to ${nf(viscosityCurve(input, 10, 40, 2)[1].viscosity)} centistokes at 40 percent.`,
     );
 
+    if (summary) {
+      window.clearTimeout(announceTimer);
+      announceTimer = window.setTimeout(() => {
+        summary.textContent = `Oil ${nf(out.oilRate)} barrels per day. Steam-oil ratio ${out.sor.toFixed(2)}. Blend ${nf(out.blendViscosity)} centistokes at 50 degrees and ${out.blendApi.toFixed(1)} degrees API. Water make ${nf(out.waterMake)} barrels per day. Carbon intensity ${nf(out.carbonIntensity)} kilograms CO2 equivalent per barrel.`;
+      }, 450);
+    }
+
     if (!fromPreset) {
       for (const button of presetButtons) button.setAttribute("aria-pressed", "false");
     }
@@ -189,4 +198,13 @@ export function mountSimulator(root: HTMLElement): void {
   }
 
   render(true);
+
+  let lastNarrow = window.matchMedia("(max-width: 720px)").matches;
+  window.addEventListener("resize", () => {
+    const next = window.matchMedia("(max-width: 720px)").matches;
+    if (next !== lastNarrow) {
+      lastNarrow = next;
+      render(true);
+    }
+  });
 }

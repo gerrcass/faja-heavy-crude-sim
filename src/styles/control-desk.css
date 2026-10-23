@@ -319,6 +319,15 @@
   color: var(--amber-deep);
 }
 
+.desk__hint {
+  margin: auto 0 0;
+  max-width: 48ch;
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  line-height: 1.55;
+  color: var(--muted-2);
+}
+
 .desk__note {
   margin: auto 0 0;
   font-family: var(--font-mono);
@@ -404,6 +413,12 @@
   fill: var(--ink-2);
   font-family: var(--font-mono);
   font-size: 10px;
+}
+
+.chart-svg.chart-narrow .chart-label,
+.chart-svg.chart-narrow .chart-value,
+.chart-svg.chart-narrow .chart-marker-label {
+  font-size: 13px;
 }
 
 .chart-curve {

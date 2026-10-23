@@ -79,7 +79,7 @@ function pipe(
 function flow(points: Point3[], tone: k.LineTone, className: string) {
   const d = k.pathOf(points.map((point) => at(point)));
   const ends = [points[0], points[points.length - 1]];
-  return `${L(d, { tone, dashed: true, className })}${D(ends.map((point) => at(point)), { size: 1.1, tone: "mid" })}`;
+  return `${L(d, { tone, flow: true, className: `flow-line ${className}` })}${D(ends.map((point) => at(point)), { size: 1.1, tone: "mid" })}`;
 }
 
 function flange(origin: Point3, axis: Point3, atS: number, radius: number, style: Style = { tone: "mid" }) {
@@ -88,18 +88,7 @@ function flange(origin: Point3, axis: Point3, atS: number, radius: number, style
 }
 
 function handwheel(x: number, y: number, z: number, radius: number) {
-  const spokes = [0, 1, 2, 3]
-    .map((index) => {
-      const angle = (index / 4) * Math.PI * 2 + 0.35;
-      return k.lineOnTop(
-        [x, y],
-        [x + Math.cos(angle) * radius, y + Math.sin(angle) * radius],
-        z + 1.2,
-        P,
-      );
-    })
-    .join("");
-  return `${S(k.cylinder(x, y, radius, z, 1.1, P, 24), { tone: "mid" })}${L(k.ring(x, y, radius, z + 1.1, P, 28), { tone: "lo" })}${L(k.ring(x, y, radius * 0.28, z + 1.1, P, 14), { tone: "lo" })}${L(spokes, { tone: "lo" })}${D([[x, y, z + 1.2]], { size: 0.45, tone: "mid" })}`;
+  return `${S(k.cylinder(x, y, radius, z, 1.1, P, 24), { tone: "mid" })}${L(k.ring(x, y, radius, z + 1.1, P, 28), { tone: "lo" })}${L(k.ring(x, y, radius * 0.28, z + 1.1, P, 14), { tone: "lo" })}${D([[x, y, z + 1.2]], { size: 0.45, tone: "mid" })}`;
 }
 
 function gauge(x: number, y: number, z: number, radius: number) {
@@ -301,9 +290,10 @@ function wellhead(x: number, y: number, height: number, accentTree = false) {
     [height + 2.8, 0.01],
   ];
   const tree = turned(profile, [x, y, 0], [0, 0, 1], { tone: "hi", className: "metal" });
+  // The stem is drawn under the tree and the handwheel so both of its ends are covered by them.
+  out.push(S(k.cylinder(x + 5.6, y, 0.55, height - 6, 6.2, P, 10), { tone: "mid" }));
   out.push(accentTree ? accent(tree) : tree);
   out.push(handwheel(x + 5.6, y, height + 0.2, 2.8));
-  out.push(L(k.segment([x + 2.8, y, height - 6], [x + 5.6, y, height - 1.4], P), { tone: "mid" }));
   out.push(pipe([[x + 2.6, y, height - 10], [x + 12, y, height - 10], [x + 12, y + 12, 11]], 1.15, { tone: "mid", maxLength: 14 }));
   return out.join("");
 }
@@ -331,9 +321,6 @@ function wellPad(): string {
   const pad = { x: -180, y: 28, w: 132, d: 68, r: 4 };
   out.push(S(k.slabOf(pad, 0, 4, P, 8, 0.7), { tone: "lo", className: "concrete" }));
   out.push(L(k.planOutline(k.insetPlan(pad, 4), 4, P, 8), { tone: "faint" }));
-  for (const x of [-148, -116]) {
-    out.push(L(k.segment([x, pad.y, 4], [x, pad.y + pad.d, 4], P), { tone: "faint" }));
-  }
   const gratePlan = { x: -148, y: 82, w: 22, d: 8, r: 1 };
   out.push(L(k.planOutline(gratePlan, 4, P, 3), { tone: "mid" }));
   for (let index = 0; index < 4; index++) {
