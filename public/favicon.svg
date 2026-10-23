@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Faja 8°">
+  <rect width="64" height="64" fill="#f2ece1"/>
+  <path d="M10 25 32 13l22 12-22 12Z" fill="#b85c12"/>
+  <path d="M10 33.5 32 45.5l22-12" fill="none" stroke="#201d18" stroke-width="3.4" stroke-linejoin="round"/>
+  <path d="M10 42 32 54l22-12" fill="none" stroke="#201d18" stroke-width="3.4" stroke-linejoin="round"/>
+  <circle cx="50" cy="16" r="3.4" fill="#201d18"/>
+</svg>

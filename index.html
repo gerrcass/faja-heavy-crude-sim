@@ -1,0 +1,895 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Faja 8° — a field guide to extra-heavy crude</title>
+    <meta
+      name="description"
+      content="An interactive field guide to extra-heavy crude production in the Orinoco Belt: the reservoir, cold production, steam, lift, separation, blending and upgrading, with an illustrative systems model."
+    />
+    <meta name="theme-color" content="#f2ece1" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="canonical" href="https://gerrcass.github.io/faja-heavy-crude-sim/" />
+    <link rel="icon" type="image/svg+xml" href="%BASE_URL%favicon.svg" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="%BASE_URL%favicon-32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="%BASE_URL%apple-touch-icon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Faja 8°" />
+    <meta property="og:title" content="Faja 8° — a field guide to extra-heavy crude" />
+    <meta
+      property="og:description"
+      content="Follow one barrel of Orinoco extra-heavy crude from the Oficina Formation to synthetic crude. Six stations, one interactive cutaway, one illustrative model."
+    />
+    <meta property="og:url" content="https://gerrcass.github.io/faja-heavy-crude-sim/" />
+    <meta property="og:image" content="https://gerrcass.github.io/faja-heavy-crude-sim/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Faja 8°: The oil is there. The problem is moving it." />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script>
+      (() => {
+        try {
+          const choice = localStorage.getItem("faja-theme");
+          const dark = choice ? choice === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+          document.documentElement.dataset.theme = dark ? "dark" : "light";
+        } catch {}
+      })();
+    </script>
+    <meta name="twitter:title" content="Faja 8° — a field guide to extra-heavy crude" />
+    <meta
+      name="twitter:description"
+      content="An interactive field guide to the Orinoco Belt: reservoir, cold production, steam, lift, blending and upgrading."
+    />
+    <meta name="twitter:image" content="https://gerrcass.github.io/faja-heavy-crude-sim/og.png" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to the field guide</a>
+    <noscript>
+      <p class="no-js-note">The prose, tables and sources work without JavaScript. The station cutaway and the control desk need it.</p>
+    </noscript>
+
+    <header class="masthead" data-masthead>
+      <div class="masthead__inner">
+        <a class="wordmark" href="#top" aria-label="Faja 8°, back to top">
+          <span class="wordmark__mark">Faja 8°</span>
+          <span class="wordmark__sub">Orinoco field guide</span>
+        </a>
+        <nav class="site-nav" aria-label="Sections">
+          <a href="#figure">Figure</a>
+          <a href="#deposit">The chain</a>
+          <a href="#control-desk">Control desk</a>
+          <a href="#glossary">Glossary</a>
+          <a href="#sources">Sources</a>
+        </nav>
+        <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">
+          <span class="theme-toggle__dot" aria-hidden="true"></span>
+          <span data-theme-label>Ink</span>
+        </button>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero__grid">
+          <div class="hero__lead">
+            <p class="eyebrow">Orinoco Belt · Venezuela · Field guide 01</p>
+            <h1 id="hero-title">The oil is there.<br /><em>The problem is moving it.</em></h1>
+            <p class="hero__lede">
+              Extra-heavy crude in the Faja Petrolífera del Orinoco is roughly 8–10° API and thousands of
+              centipoise at reservoir conditions. It is produced in situ, lifted through sand, heated or diluted,
+              and finally upgraded. This guide follows one barrel through that chain.
+            </p>
+            <p class="hero__note">
+              A field manual, not a forecast. Every public number is sourced; every generated number is labelled
+              illustrative.
+            </p>
+          </div>
+          <aside class="specimen" aria-labelledby="specimen-title">
+            <p class="specimen__label" id="specimen-title">Specimen data · Faja 8°</p>
+            <dl class="specimen__list">
+              <div>
+                <dt>Oil in place</dt>
+                <dd>~1.3 <span>trillion bbl</span></dd>
+                <dd class="specimen__source">median; range 0.9–1.4 · <a href="https://pubs.usgs.gov/fs/2009/3028/">USGS 2009</a></dd>
+              </div>
+              <div>
+                <dt>Technically recoverable</dt>
+                <dd>513 <span>billion bbl</span></dd>
+                <dd class="specimen__source">mean; 380–652 · <a href="https://pubs.usgs.gov/fs/2009/3028/">USGS 2009</a></dd>
+              </div>
+              <div>
+                <dt>Reservoir depth</dt>
+                <dd>150–1,400 <span>m</span></dd>
+                <dd class="specimen__source"><a href="https://pubs.usgs.gov/fs/2009/3028/">USGS 2009</a></dd>
+              </div>
+              <div>
+                <dt>Gravity</dt>
+                <dd>4–16° <span>API</span></dd>
+                <dd class="specimen__source">typically 8–10° · <a href="https://pubs.usgs.gov/fs/2009/3028/">USGS 2009</a></dd>
+              </div>
+              <div>
+                <dt>Viscosity</dt>
+                <dd>2,000–8,000 <span>cP</span></dd>
+                <dd class="specimen__source">at reservoir conditions · <a href="https://doi.org/10.2118/165061-MS">SPE 165061</a></dd>
+              </div>
+            </dl>
+            <a class="text-link specimen__jump" href="#deposit">Follow the barrel <span aria-hidden="true">↓</span></a>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section figure-section" id="figure" aria-labelledby="figure-title">
+        <div class="section__head">
+          <p class="eyebrow"><span class="eyebrow__num">Fig. 1</span> The production train</p>
+          <h2 id="figure-title">One object, six stations</h2>
+          <p class="section__lede">
+            A bench model of a representative Faja train, from the Oficina sands to synthetic crude. Select a
+            station to light it and read what it does. The drawing is presentational; the buttons are the control.
+          </p>
+        </div>
+
+        <figure class="iso-figure" data-figure aria-labelledby="figure-caption-title">
+          <div class="iso-plate" data-figure-plate>
+            <div class="iso-plate-corners">
+              <span class="iso-plate-corner" data-corner="fig" aria-hidden="true">Fig. 1</span>
+              <span class="iso-plate-corner" data-corner="title" aria-hidden="true">Faja production train</span>
+              <span class="iso-plate-corner" data-corner="hint" aria-hidden="true">Select a station</span>
+              <span class="iso-plate-corner" data-corner="readout" data-readout role="status" aria-live="polite" aria-atomic="true">06 stations · select one</span>
+            </div>
+            <div class="iso" data-figure-root data-theme="light">
+              <div class="iso-stage" data-figure-stage></div>
+            </div>
+            <div class="station-buttons" data-station-buttons role="group" aria-label="Production stations">
+              <button type="button" class="station-button" data-station-button="reservoir" aria-pressed="false">
+                <span class="station-button__num">01</span><span class="station-button__label">Reservoir</span>
+              </button>
+              <button type="button" class="station-button" data-station-button="wellpad" aria-pressed="false">
+                <span class="station-button__num">02</span><span class="station-button__label">Well pad</span>
+              </button>
+              <button type="button" class="station-button" data-station-button="steam" aria-pressed="false">
+                <span class="station-button__num">03</span><span class="station-button__label">Steam</span>
+              </button>
+              <button type="button" class="station-button" data-station-button="separation" aria-pressed="false">
+                <span class="station-button__num">04</span><span class="station-button__label">Separation</span>
+              </button>
+              <button type="button" class="station-button" data-station-button="blend" aria-pressed="false">
+                <span class="station-button__num">05</span><span class="station-button__label">Blend</span>
+              </button>
+              <button type="button" class="station-button" data-station-button="upgrade" aria-pressed="false">
+                <span class="station-button__num">06</span><span class="station-button__label">Upgrade</span>
+              </button>
+            </div>
+            <div class="station-detail" data-station-detail>
+              <p class="station-detail__eyebrow">Six stations</p>
+              <h3 class="station-detail__title">Select a station</h3>
+              <p class="station-detail__copy">Light one part of the train to see what it does. The drawing stays presentational; the buttons carry the state.</p>
+            </div>
+          </div>
+          <figcaption class="iso-legend">
+            <span class="iso-keys" aria-hidden="true">
+              <span class="iso-key"><svg class="iso-swatch" data-mark="raised" viewBox="0 0 16 10"><path d="M2 4.5 8 1.5 14 4.5 14 6 8 9 2 6Z"/><path class="iso-swatch-crease" d="M2 4.5 8 7.5 14 4.5"/></svg> Plant and structure</span>
+              <span class="iso-key"><svg class="iso-swatch" data-mark="lit" viewBox="0 0 16 10"><path d="M2 4.5 8 1.5 14 4.5 14 6 8 9 2 6Z"/><path class="iso-swatch-crease" d="M2 4.5 8 7.5 14 4.5"/></svg> Active station</span>
+              <span class="iso-key"><svg class="iso-swatch" data-mark="dashed" viewBox="0 0 16 10"><path d="M1.5 5h13"/></svg> Steam and oil flow</span>
+            </span>
+            <span class="iso-caption" id="figure-caption-title">
+              <strong>Fig. 1 · A representative production train, not a specific field.</strong>
+              The reservoir is a cutaway specimen: layered Oficina sands with two horizontal wells. The pad
+              carries Christmas trees and a progressing-cavity-pump drive head. Steam, separation, blending
+              and upgrading follow in process order, joined by pipework. Amber marks the selected station; the
+              dashed traces indicate steam and oil routes, not measured flow.
+            </span>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="section" id="deposit" aria-labelledby="deposit-title">
+        <div class="section__head">
+          <p class="eyebrow"><span class="eyebrow__num">01</span> The deposit</p>
+          <h2 id="deposit-title">A foreland basin filled with sand</h2>
+        </div>
+        <div class="prose">
+          <p class="dropcap">
+            The Faja sits in the East Venezuela Basin, a foreland basin south of the Caribbean–South America fold
+            belt. Oil generated in the deeper basin migrated updip into shallow Miocene sandstones of the
+            <a href="#term-oficina-formation">Oficina Formation</a> (<a class="cite" href="https://pubs.usgs.gov/fs/2009/3028/">USGS 2009</a>).
+            Those sands are fluvial, nearshore-marine and tidal: porous, permeable and largely unconsolidated, but
+            cut by shale barriers and facies changes that make every average a poor description of the next well
+            (<a class="cite" href="https://doi.org/10.2118/69697-MS">SPE 69697</a>).
+          </p>
+          <p>
+            The oil is <strong>biodegraded</strong>. Bacteria removed the light ends, leaving a dense, viscous,
+            asphaltic crude with sulfur, vanadium and nickel. One upgrader feed carried about 4.3 wt% sulfur and
+            3.2 mg KOH/g total acid number (<a class="cite" href="https://doi.org/10.5006/C2006-06586">NACE 2006</a>).
+            That is not a nuisance at the edges of the process. It is the reason the surface train has a diluent
+            loop and an upgrader at all.
+          </p>
+          <p>
+            API gravity is an inverse density scale: a lower number means a denser oil. At 8–10° API the crude is
+            close to, or slightly denser than, water. <a href="#term-viscosity">Viscosity</a> is the other half of
+            the problem: 2,000–8,000 cP at reservoir conditions, against about 1 cP for water. The resource is not
+            the constraint. Mobility is.
+          </p>
+
+          <dl class="data-list" aria-label="Reservoir and resource ranges">
+            <div><dt>Belt extent</dt><dd>~55,000 km² across Guárico, Anzoátegui, Monagas and Delta Amacuro</dd></div>
+            <div><dt>Assessment unit</dt><dd>~50,000 km²</dd></div>
+            <div><dt>Original oil in place</dt><dd>~1.3 trillion bbl (median; range 0.9–1.4)</dd></div>
+            <div><dt>Technically recoverable</dt><dd>513 billion bbl mean (range 380–652)</dd></div>
+            <div><dt>Reservoir depth</dt><dd>150–1,400 m</dd></div>
+            <div><dt>Gravity</dt><dd>4–16° API; typically 8–10°</dd></div>
+            <div><dt>Viscosity</dt><dd>2,000–8,000 cP at reservoir conditions</dd></div>
+            <div><dt>Porosity</dt><dd>20–38% (median 25%)</dd></div>
+            <div><dt>Net oil sand</dt><dd>1–350 ft (median 150 ft)</dd></div>
+            <div><dt>Water saturation</dt><dd>10–25%</dd></div>
+            <div><dt>Cold recovery factor</dt><dd>6–9% of OOIP</dd></div>
+            <div><dt>CSS recovery factor</dt><dd>20–25% of OOIP</dd></div>
+          </dl>
+          <p class="source-note">
+            Ranges from <a href="https://pubs.usgs.gov/fs/2009/3028/">USGS 2009</a>, <a href="https://doi.org/10.2118/165061-MS">SPE 165061</a>
+            and <a href="https://doi.org/10.2118/117689-MS">SPE 117689</a>. The USGS assessment used a 45% recovery
+            assumption with thermal methods; that is an assessment assumption, not a current field average.
+          </p>
+
+          <aside class="margin-note">
+            <p class="margin-note__label">Not mined</p>
+            <p>
+              The Faja is an in-situ resource. There is no oil-sands mining here: no shovels, no trucks, no
+              tailings ponds. Production means wells, pumps, heat and surface process.
+            </p>
+          </aside>
+
+          <h3>Three quantities that are not the same</h3>
+          <p>
+            <a href="#term-ooip">Original oil in place</a> is the oil estimated to be in the rock before
+            production. <a href="#term-technically-recoverable">Technically recoverable</a> is the fraction that
+            existing or foreseeable technology could extract, regardless of price. Production is a rate: barrels
+            per day from wells that have actually been drilled and connected. A large OOIP says nothing about how
+            fast the field can produce, and a large technically recoverable number says nothing about whether the
+            capital, rigs, steam plants and upgrader capacity exist to produce it.
+          </p>
+          <p>
+            Cold production recovers a single-digit-to-low-teens percentage of OOIP. Thermal methods can reach
+            several times that. The gap between those two numbers is the reason the next section exists.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="cold-start" aria-labelledby="cold-title">
+        <div class="section__head">
+          <p class="eyebrow"><span class="eyebrow__num">02</span> Cold start</p>
+          <h2 id="cold-title">Reach the sand sideways</h2>
+        </div>
+        <div class="prose">
+          <p class="dropcap">
+            A vertical well in a thin, heterogeneous sand sees a few metres of pay. A
+            <a href="#term-horizontal-well">horizontal well</a> turns inside the reservoir and runs through it,
+            exposing hundreds to thousands of metres of sand to one wellbore. Faja developments are built from
+            <a href="#term-well-pad">pads</a>: one surface location, many directional and horizontal wells, one
+            gathering system.
+          </p>
+          <p>
+            Petrozuata drilled 101 single-lateral and 140 multilateral wells in Zuata between 1998 and 2001
+            (<a class="cite" href="https://doi.org/10.2118/78969-MS">SPE 78969</a>). The laterals were typically on
+            the order of 1–2 km. A <a href="#term-multilateral-well">multilateral well</a> adds branches from one
+            main bore, increasing reservoir contact without adding a surface location.
+          </p>
+          <p>
+            The sand is the second problem. Oficina sands are unconsolidated; they move with the oil. Operators
+            either produce sand deliberately or hold it back with slotted liners, screens or gravel packs. Sand
+            movement can open high-permeability channels, called wormholes, and support a foamy-oil flow regime in
+            which dissolved gas comes out of solution as tiny bubbles and helps drive viscous oil toward the well
+            (<a class="cite" href="https://doi.org/10.2118/79025-MS">SPE 79025</a>).
+          </p>
+          <p>
+            The same sand erodes pumps, fills separators and settles in tanks. Sand management is not a cleanup
+            detail at the end of the process; it is a design condition that follows the fluid from the completion
+            to the knock-out drum (<a class="cite" href="https://doi.org/10.2118/184968-MS">SPE 184968</a>).
+          </p>
+          <p>
+            Cold production is cheap relative to steam, and it is the baseline development method. It is also
+            limited: 6–9% recovery in the Faja is a common range. That is enough to justify the wells, but not
+            enough to drain the resource. Thermal EOR is the next step, not an optional extra.
+          </p>
+          <p class="figure-ref">The well pad in <a href="#figure">Fig. 1</a> carries Christmas trees and a PCP drive head.</p>
+        </div>
+      </section>
+
+      <section class="section" id="heat" aria-labelledby="heat-title">
+        <div class="section__head">
+          <p class="eyebrow"><span class="eyebrow__num">03</span> Heat</p>
+          <h2 id="heat-title">Steam is a loan against viscosity</h2>
+        </div>
+        <div class="prose">
+          <p class="dropcap">
+            Viscosity falls steeply as temperature rises. That is the whole thermal proposition: heat the oil and
+            it moves. The cost is that making steam consumes fuel gas and treated water, and the heat is uneven.
+            <a href="#term-css">Cyclic steam stimulation</a> (CSS, “huff and puff”) is the common starting point:
+            inject steam into a well for weeks, shut it in for days to weeks, then produce the heated oil from the
+            same well for weeks to months. Steam is typically 300–340 °C
+            (<a class="cite" href="https://doi.org/10.2118/188651-MS">SPE 188651</a>).
+          </p>
+          <p>
+            <a href="#term-steam-flooding">Steam flooding</a> uses separate injectors and producers.
+            <a href="#term-hasd">HASD</a> — horizontal alternating steam drive — was studied specifically for the
+            Faja to improve sweep in thin, heterogeneous sands
+            (<a class="cite" href="https://doi.org/10.2118/117689-MS">SPE 117689</a>). It is not SAGD. SAGD needs
+            thick, continuous pay and a steam chamber that can grow by gravity drainage; Faja reservoirs are often
+            thinner and more heterogeneous. SAGD pilots exist, but SAGD is not the default story here.
+          </p>
+          <p>
+            <a href="#term-steam-quality">Steam quality</a> is the mass fraction of steam that is vapour in a
+            steam–water mixture. Conventional field generators deliver roughly 70–80% quality; high-quality pilots
+            have tested 95–99% (<a class="cite" href="https://doi.org/10.2118/218657-MS">SPE 218657</a>). Higher
+            quality means more latent heat per tonne of water, so the same oil production needs less water and less
+            fuel.
+          </p>
+          <p>
+            The system-level efficiency number is the <a href="#term-sor">steam-oil ratio</a>: barrels of steam,
+            measured as cold-water equivalent, per barrel of oil produced. CSS projects commonly run in the 3–5
+            range (<a class="cite" href="https://en.wikipedia.org/wiki/Steam_injection_(oil_industry)">steam injection literature</a>); poor projects run higher. SOR drives fuel gas, water treatment and CO₂. It is the number to watch
+            when someone claims a thermal process is efficient.
+          </p>
+          <p>
+            Water is the loop inside the loop. Steam generation needs softened, treated water; produced water is
+            recovered, cleaned and reused. Every barrel of steam is also a barrel of water to treat, and every
+            barrel of water treated is a cost that does not appear in the oil rate.
+          </p>
+          <div class="callout">
+            <p class="callout__label">The SAGD test</p>
+            <p>
+              Does the reservoir have enough thickness and vertical permeability for a steam chamber to grow, and
+              is the pay continuous enough that the chamber does not leak into a thief zone? If not, SAGD is the
+              wrong tool. CSS and HASD are the Faja family.
+            </p>
+          </div>
+          <p class="figure-ref">The steam generator in <a href="#figure">Fig. 1</a> is a once-through unit on a skid, feeding the pad manifold.</p>
+        </div>
+      </section>
+
+      <section class="section" id="lift" aria-labelledby="lift-title">
+        <div class="section__head">
+          <p class="eyebrow"><span class="eyebrow__num">04</span> Lift</p>
+          <h2 id="lift-title">A screw inside a rubber tube</h2>
+        </div>
+        <div class="prose">
+          <p class="dropcap">
+            A <a href="#term-pcp">progressing-cavity pump</a> is a positive-displacement pump with two parts: a
+            helical steel rotor and an elastomer stator with one more lobe. The rotor turns inside the stator and
+            forms sealed cavities that travel up the pump. Flow is proportional to speed. The pump tolerates
+            viscous, sandy fluid, which is why it became the predominant artificial lift in several Faja fields
+            (<a class="cite" href="https://doi.org/10.2118/165061-MS">SPE 165061</a>).
+          </p>
+          <p>
+            Its limits are mechanical and thermal. The elastomer has a temperature ceiling. The pump has a
+            differential-pressure limit. Gas can break the seal between cavities, and sand abrades both rotor and
+            stator. Run life is a materials and operating problem, not a theoretical one
+            (<a class="cite" href="https://doi.org/10.2118/191118-MS">SPE 191118</a>). A PCP is not a universal
+            answer, and not every Faja well uses one.
+          </p>
+
+          <div class="compare" role="table" aria-label="Progressing-cavity pump and electrical submersible pump compared">
+            <div class="compare__row compare__head" role="row">
+              <span role="columnheader">Lift</span>
+              <span role="columnheader">Handles</span>
+              <span role="columnheader">Weak point</span>
+            </div>
+            <div class="compare__row" role="row">
+              <span role="cell"><strong>PCP</strong></span>
+              <span role="cell">Viscous oil, sand, moderate gas; flow proportional to speed</span>
+              <span role="cell">Elastomer temperature, differential pressure, gas, wear</span>
+            </div>
+            <div class="compare__row" role="row">
+              <span role="cell"><strong>ESP</strong></span>
+              <span role="cell">Higher volumes; multistage centrifugal lift</span>
+              <span role="cell">Sand and very high viscosity; gas handling; cable and motor failures</span>
+            </div>
+            <div class="compare__row" role="row">
+              <span role="cell"><strong>Rod pump</strong></span>
+              <span role="cell">Lower volumes; simple surface drive</span>
+              <span role="cell">Rod loading, deviation, abrasive wear</span>
+            </div>
+          </div>
+          <p class="source-note">
+            The comparison is qualitative; the brief’s sources do not support a single volume or depth ranking.
+            Historical Cerro Negro vertical and deviated wells produced 200–600 bbl/d of 8° API oil at about
+            2,000 cP with rod pumps and top-drive PCPs; ESPs arrived for higher volumes
+            (<a href="https://doi.org/10.2118/97889-PA">SPE 97889</a>).
+          </p>
+          <p>
+            Gas is the other lift problem. A PCP can tolerate some free gas, but too much gas reduces volumetric
+            efficiency; an ESP needs a gas separator or a recirculation path. The produced fluid is a mixture, and
+            the pump has to be selected for the mixture, not for the oil rate on its own.
+          </p>
+          <p class="figure-ref">The drive head on the pad in <a href="#figure">Fig. 1</a> turns the polished rod; the pump itself sits downhole.</p>
+        </div>
+      </section>
+
+      <section class="section" id="separation" aria-labelledby="separation-title">
+        <div class="section__head">
+          <p class="eyebrow"><span class="eyebrow__num">05</span> Separation and water</p>
+          <h2 id="separation-title">The surface train starts by splitting the stream</h2>
+        </div>
+        <div class="prose">
+          <p class="dropcap">
+            A well does not produce oil. It produces a mixture of oil, water, gas and sand. The
+            <a href="#term-three-phase-separator">three-phase separator</a> is the first place the mixture becomes
+            separate streams: gas off the top, oil from the oil layer, water from the bottom. The separator is a
+            pressure vessel, not a tank, and its internals are chosen for the fluid: inlet momentum breakers,
+            coalescing plates, weirs, mist eliminators.
+          </p>
+          <p>
+            Sand is removed upstream or from the separator bottoms. A sand knock-out and a water boot are the
+            unglamorous parts that decide whether the plant stays online. Sand fills vessels, erodes valves and
+            travels with the water. The gathering network has to be designed to keep it moving rather than let it
+            settle in a low spot (<a class="cite" href="https://doi.org/10.2118/184968-MS">SPE 184968</a>).
+          </p>
+          <p>
+            <a href="#term-water-cut">Water cut</a> rises over field life. Early on, the separator may be oil-rich;
+            later, water dominates the liquid stream and the water-treatment capacity becomes the bottleneck.
+            Produced water is not disposable by default: it is treated, recycled to steam generation where the
+            chemistry allows, or disposed of under permit.
+          </p>
+          <p>
+            Gas has a use. Separator gas can be treated and sent to the steam generators as fuel, which closes a
+            loop between the separator and the thermal system. The gas line in <a href="#figure">Fig. 1</a> runs
+            from the separator scrubber back to the generator burner.
+          </p>
+          <div class="loop" aria-label="Water and gas loop">
+            <span>Steam generator</span><span aria-hidden="true">→</span><span>Well</span><span aria-hidden="true">→</span
+            ><span>Separator</span><span aria-hidden="true">→</span><span>Water treatment</span><span aria-hidden="true">↺</span>
+          </div>
+          <p class="source-note">
+            The loop is a process description, not a mass balance. The model’s water and carbon numbers are
+            illustrative and labelled as such in the control desk.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="blend" aria-labelledby="blend-title">
+        <div class="section__head">
+          <p class="eyebrow"><span class="eyebrow__num">06</span> Blend</p>
+          <h2 id="blend-title">Diluent is a circulating cost</h2>
+        </div>
+        <div class="prose">
+          <p class="dropcap">
+            Extra-heavy crude cannot meet a pipeline viscosity specification on its own. The usual answer is
+            <a href="#term-diluent">diluent</a>: naphtha or a light hydrocarbon, blended into the crude at
+            20–35 vol% to reach a pumpable <a href="#term-blend">blend</a> (<a class="cite" href="https://doi.org/10.2118/69433-MS">SPE 69433</a>). The blend’s API gravity and viscosity
+            become the custody-transfer specifications, so the mixer is a commercial instrument as much as a piece
+            of pipe.
+          </p>
+          <p>
+            Diluent is a loop, not a one-way additive. It has to be sourced, transported to the field, blended,
+            transported to the upgrader and recovered there. Diluent availability and price are first-order
+            operating constraints. A field that can produce oil but cannot source diluent is a field with a
+            storage problem.
+          </p>
+          <p>
+            Cerro Negro also tested downhole diluent injection, adding light hydrocarbon before the pump to reduce
+            viscosity in the wellbore (<a class="cite" href="https://doi.org/10.2118/69433-MS">SPE 69433</a>). The
+            surface blend is still needed for the pipeline; downhole dilution changes where the viscosity problem
+            is solved, not whether it is solved.
+          </p>
+          <p>
+            A static mixer is a length of pipe with fixed helical elements. It has no moving parts. The elements
+            split, rotate and recombine the stream, so the blend that reaches the custody meter is not a
+            two-layer slug of diluent and crude. The open mixer in <a href="#figure">Fig. 1</a> shows the elements;
+            the real housing is a closed spool.
+          </p>
+          <p class="figure-ref">The blend section of the model shows viscosity and API against diluent fraction. The 350 cSt line is a teaching reference, not a custody specification.</p>
+        </div>
+      </section>
+
+      <section class="section" id="upgrade" aria-labelledby="upgrade-title">
+        <div class="section__head">
+          <p class="eyebrow"><span class="eyebrow__num">07</span> Upgrade</p>
+          <h2 id="upgrade-title">Reject carbon, then add hydrogen</h2>
+        </div>
+        <div class="prose">
+          <p class="dropcap">
+            An <a href="#term-upgrader">upgrader</a> is not a refinery. It is a front-end facility that turns
+            extra-heavy crude or blend into a lighter, sweeter synthetic crude that a conventional refinery can
+            process. The common configuration is carbon rejection followed by hydrogen addition: a
+            <a href="#term-delayed-coker">delayed coker</a> and a <a href="#term-hydrotreater">hydrotreater</a>.
+          </p>
+          <p>
+            In a delayed coker, vacuum residue is heated to about 480–505 °C in a furnace and soaked in a coke
+            drum. The heavy molecules crack; coke deposits in the drum and lighter gas oil leaves the top. Coke
+            yield is roughly 18–30 wt% of resid feed. The drums are quenched and decoked with high-pressure water,
+            which is why they are tall vessels with repeat cycles rather than continuous reactors
+            (<a class="cite" href="https://en.wikipedia.org/wiki/Delayed_coker">delayed coker literature</a>).
+          </p>
+          <p>
+            The coker’s gas oil still contains sulfur, nitrogen, metals and aromatics. The hydrotreater adds
+            hydrogen over a catalyst to remove heteroatoms and saturate aromatics. Hydrogen is not free: it is
+            produced or purchased, and it carries its own energy and carbon cost.
+          </p>
+          <p>
+            One Orinoco upgrader, designed for 180,000 b/d, took an 8° API feed with 4.3 wt% sulfur and 3.2 TAN,
+            blended with naphtha, and produced a 32° API synthetic crude with 0.2 wt% sulfur
+            (<a class="cite" href="https://doi.org/10.5006/C2006-06586">NACE 2006</a>). That is one useful anchor,
+            not a description of every upgrader. The exact product slate depends on the feed, the configuration
+            and the hydrogen balance.
+          </p>
+          <p>
+            Upgrading does not make the byproducts disappear. Petroleum coke, sulfur and metals have to be sold,
+            stockpiled or managed, and the process emits CO₂. A barrel of syncrude is cleaner at the refinery gate
+            than a barrel of extra-heavy crude, but the carbon and the contaminants have moved, not vanished.
+          </p>
+          <p>
+            Export blends are designated grades. Venezuela’s Merey blend is a heavy sour grade of roughly 16° API (<a class="cite" href="https://www.eia.gov/international/">EIA</a>);
+            its exact gravity and sulfur move with the blend. The site says “roughly” for a reason.
+          </p>
+          <p class="figure-ref">The upgrader module in <a href="#figure">Fig. 1</a> groups the fractionation columns, coke drums, hydrotreater and flare.</p>
+        </div>
+      </section>
+
+      <section class="section control-desk" id="control-desk" aria-labelledby="desk-title">
+        <div class="section__head">
+          <p class="eyebrow"><span class="eyebrow__num">08</span> The control desk</p>
+          <h2 id="desk-title">Move four levers. Watch the constraints.</h2>
+          <p class="section__lede">
+            An illustrative systems model of one well at a steady operating point. It is deterministic, bounded to
+            the ranges in the research brief, and built to show direction and trade-off, not to forecast a field.
+          </p>
+          <p class="model-flag"><span aria-hidden="true">△</span> Illustrative model — not a reservoir simulator</p>
+        </div>
+
+        <div class="desk" data-simulator>
+          <div class="desk__controls">
+            <div class="presets" role="group" aria-label="Operating presets">
+              <button type="button" class="preset" data-preset="cold" aria-pressed="false">Cold production</button>
+              <button type="button" class="preset" data-preset="css" aria-pressed="false">Conventional CSS</button>
+              <button type="button" class="preset" data-preset="optimized" aria-pressed="true">Optimized CSS</button>
+            </div>
+
+            <fieldset class="mode">
+              <legend>Development mode</legend>
+              <label class="mode__option">
+                <input type="radio" name="mode" value="cold" data-input="mode" />
+                <span>Cold</span>
+              </label>
+              <label class="mode__option">
+                <input type="radio" name="mode" value="css" data-input="mode" checked />
+                <span>CSS</span>
+              </label>
+            </fieldset>
+
+            <div class="lever" data-lever="steamRate">
+              <div class="lever__head">
+                <label for="steam-rate">Steam rate</label>
+                <output for="steam-rate" data-value="steamRate">270 t/d</output>
+              </div>
+              <input id="steam-rate" type="range" min="0" max="400" step="5" value="270" data-input="steamRate" />
+              <p class="lever__hint">Cold-water equivalent. Ignored in cold mode.</p>
+            </div>
+
+            <div class="lever" data-lever="steamQuality">
+              <div class="lever__head">
+                <label for="steam-quality">Steam quality</label>
+                <output for="steam-quality" data-value="steamQuality">92%</output>
+              </div>
+              <input id="steam-quality" type="range" min="60" max="95" step="1" value="92" data-input="steamQuality" />
+              <p class="lever__hint">Mass fraction vapour. Higher quality carries more latent heat per tonne.</p>
+            </div>
+
+            <div class="lever" data-lever="diluent">
+              <div class="lever__head">
+                <label for="diluent">Diluent fraction</label>
+                <output for="diluent" data-value="diluent">36 vol%</output>
+              </div>
+              <input id="diluent" type="range" min="10" max="40" step="1" value="36" data-input="diluent" />
+              <p class="lever__hint">Volume fraction of the blended export stream. The 350 cSt line is illustrative.</p>
+            </div>
+
+            <div class="lever" data-lever="pumpSpeed">
+              <div class="lever__head">
+                <label for="pump-speed">Pump speed</label>
+                <output for="pump-speed" data-value="pumpSpeed">58 Hz</output>
+              </div>
+              <input id="pump-speed" type="range" min="20" max="60" step="1" value="58" data-input="pumpSpeed" />
+              <p class="lever__hint">PCP speed. Capacity is finite; above it, the pump is the bottleneck.</p>
+            </div>
+            <p class="desk__hint">Presets are coherent operating points, not an optimisation. Move a lever to leave the preset.</p>
+          </div>
+
+          <div class="desk__outputs">
+            <p class="constraint" data-constraint role="status" aria-live="polite">Within the model’s operating envelope.</p>
+            <dl class="readouts">
+              <div><dt>Oil rate</dt><dd><span data-output="oilRate">558</span><span class="readout__unit">bbl/d</span></dd></div>
+              <div><dt>Steam-oil ratio</dt><dd><span data-output="sor">3.04</span><span class="readout__unit">bbl/bbl</span></dd></div>
+              <div><dt>Blend viscosity</dt><dd><span data-output="blendViscosity">280</span><span class="readout__unit">cSt @ 50 °C</span></dd></div>
+              <div><dt>Blend gravity</dt><dd><span data-output="blendApi">22.2</span><span class="readout__unit">°API</span></dd></div>
+              <div><dt>Water make</dt><dd><span data-output="waterMake">198</span><span class="readout__unit">bbl/d</span></dd></div>
+              <div><dt>Carbon intensity</dt><dd><span data-output="carbonIntensity">84</span><span class="readout__unit">kg CO₂e/bbl</span></dd></div>
+            </dl>
+            <div class="constraint-list" data-constraints></div>
+            <p class="desk__note">All outputs are illustrative. One well, one day, steady state.</p>
+          </div>
+
+          <figure class="chart" aria-labelledby="chart-title">
+            <figcaption class="chart__head">
+              <span id="chart-title">Blend viscosity against diluent</span>
+              <span class="chart__key"><span class="chart__key-line"></span> 350 cSt reference</span>
+            </figcaption>
+            <div class="chart__plot" data-chart role="img" aria-label="Blend viscosity against diluent fraction."></div>
+            <p class="chart__caption">Computed from the same model at the current steam, quality and pump settings. Viscosity is dead oil at 50 °C.</p>
+          </figure>
+
+          <div class="ledger" data-ledger aria-label="One-barrel ledger">
+            <p class="ledger__title">One barrel of oil, in and out</p>
+            <div class="ledger__row" data-ledger-row="steam">
+              <span class="ledger__label">Steam</span>
+              <span class="ledger__bar"><span class="ledger__fill" data-ledger-bar="steam"></span></span>
+              <span class="ledger__value" data-ledger-value="steam">3.04 bbl/bbl</span>
+            </div>
+            <div class="ledger__row" data-ledger-row="water">
+              <span class="ledger__label">Water make</span>
+              <span class="ledger__bar"><span class="ledger__fill" data-ledger-bar="water"></span></span>
+              <span class="ledger__value" data-ledger-value="water">0.35 bbl/bbl</span>
+            </div>
+            <div class="ledger__row" data-ledger-row="diluent">
+              <span class="ledger__label">Diluent</span>
+              <span class="ledger__bar"><span class="ledger__fill" data-ledger-bar="diluent"></span></span>
+              <span class="ledger__value" data-ledger-value="diluent">0.56 bbl/bbl</span>
+            </div>
+            <div class="ledger__row" data-ledger-row="energy">
+              <span class="ledger__label">Energy</span>
+              <span class="ledger__bar"><span class="ledger__fill" data-ledger-bar="energy"></span></span>
+              <span class="ledger__value" data-ledger-value="energy">1.12 GJ/bbl</span>
+            </div>
+            <div class="ledger__row" data-ledger-row="carbon">
+              <span class="ledger__label">CO₂e</span>
+              <span class="ledger__bar"><span class="ledger__fill" data-ledger-bar="carbon"></span></span>
+              <span class="ledger__value" data-ledger-value="carbon">84 kg/bbl</span>
+            </div>
+          </div>
+
+          <details class="assumptions">
+            <summary>Assumptions and boundaries</summary>
+            <ul>
+              <li>One well, one day, at a steady operating point. No decline curve, no transient flow.</li>
+              <li>The pump lifts oil; produced water is reported separately so the levers stay readable. Real pumps lift the whole liquid stream.</li>
+              <li>Blend viscosity is dead oil at 50 °C, mixed by a log rule. The 350 cSt reference is a teaching line, not a custody specification.</li>
+              <li>Carbon intensity is an illustrative well-to-tank boundary: steam fuel, diluent, pumping and a fixed processing term.</li>
+              <li>Steam quality changes the heat carried per tonne and the share of steam that returns as water.</li>
+              <li>Presets are coherent operating points, not optimisations of a real field.</li>
+            </ul>
+            <p>
+              The model’s equations live in <code>src/model/field.ts</code> and its public contract is tested in
+              <code>tests/field.test.ts</code>. The research ranges are in <code>docs/research/orinoco-brief.md</code>.
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <section class="section not-model" id="not-a-simulator" aria-labelledby="not-title">
+        <div class="section__head">
+          <p class="eyebrow"><span class="eyebrow__num">09</span> Boundaries</p>
+          <h2 id="not-title">What this model is not</h2>
+        </div>
+        <div class="prose prose--narrow">
+          <p class="dropcap">
+            It is not a reservoir simulator. It does not solve flow through rock, history-match a field, forecast a
+            decline or price a barrel. It does not know the thickness of the pay at a particular location, the
+            salinity of the produced water or the availability of diluent next quarter.
+          </p>
+          <p>
+            It is a deterministic systems model: one well, one steady operating point, four levers and a small set
+            of outputs. Its job is to make the trade-offs visible. Raising steam can raise the oil rate and the SOR
+            at the same time. Raising diluent lowers viscosity and raises API. A slow pump can cap the rate before
+            the reservoir does. Those directions are the lesson; the magnitudes are illustrative.
+          </p>
+          <p>
+            The distinction matters because the oil industry is full of precise numbers attached to uncertain
+            models. A generated number without a boundary is a false promise. Here the boundary is printed beside
+            the controls.
+          </p>
+        </div>
+      </section>
+
+      <section class="section field-notes" id="field-notes" aria-labelledby="notes-title">
+        <div class="section__head">
+          <p class="eyebrow"><span class="eyebrow__num">10</span> Field notes</p>
+          <h2 id="notes-title">A short history of the Faja</h2>
+          <p class="section__lede">Context, not politics. Dates are drawn from the sources below; current production is deliberately not quantified.</p>
+        </div>
+        <ol class="timeline">
+          <li>
+            <span class="timeline__year">1936</span>
+            <div>
+              <h3>La Canoa-1</h3>
+              <p>The first well in the belt is drilled near La Canoa, Anzoátegui. It is a test, not a development.</p>
+            </div>
+          </li>
+          <li>
+            <span class="timeline__year">1990s</span>
+            <div>
+              <h3>Strategic associations</h3>
+              <p>Four heavy-oil associations open the belt to integrated upstream and upgrading projects.</p>
+            </div>
+          </li>
+          <li>
+            <span class="timeline__year">2007</span>
+            <div>
+              <h3>Majority control</h3>
+              <p>The government takes majority control of the associations, changing the operating and investment structure.</p>
+            </div>
+          </li>
+          <li>
+            <span class="timeline__year">2010s</span>
+            <div>
+              <h3>Decline</h3>
+              <p>Production falls as investment, maintenance and diluent supply lag. The resource does not change.</p>
+            </div>
+          </li>
+          <li>
+            <span class="timeline__year">2020s</span>
+            <div>
+              <h3>Capacity, not geology</h3>
+              <p>The constraint is surface capacity, capital and operations. The belt remains a very large in-place resource.</p>
+            </div>
+          </li>
+        </ol>
+        <p class="source-note">
+          History compiled from <a href="https://www.ogj.com/exploration-development/discoveries/article/17208966/all-about-orinoco">Oil &amp; Gas Journal</a>,
+          <a href="https://www.eia.gov/international/">US EIA</a> and <a href="https://www.opec.org/">OPEC</a>. No current production figure is quoted.
+        </p>
+      </section>
+
+      <section class="section glossary" id="glossary" aria-labelledby="glossary-title">
+        <div class="section__head">
+          <p class="eyebrow"><span class="eyebrow__num">11</span> Glossary</p>
+          <h2 id="glossary-title">The vocabulary</h2>
+          <p class="section__lede">Terms are defined on first use in the prose; this is the place to come back to.</p>
+        </div>
+        <dl class="glossary__list">
+          <div id="term-extra-heavy-crude"><dt>Extra-heavy crude</dt><dd>Liquid petroleum with API gravity below 10° and reservoir viscosity above 10,000 cP under the World Energy Council definition. The Faja is commonly described as 8–10° API with viscosities in the thousands of centipoise.</dd></div>
+          <div id="term-api-gravity"><dt>API gravity</dt><dd>An inverse density scale: higher API means lighter oil. Orinoco extra-heavy crude is roughly 8–10° API; a 32° API synthetic crude is much lighter.</dd></div>
+          <div id="term-viscosity"><dt>Viscosity</dt><dd>A fluid’s resistance to flow, measured in centipoise (cP). It falls steeply as temperature rises, which is why heat and diluent are the two levers in this system.</dd></div>
+          <div id="term-oficina-formation"><dt>Oficina Formation</dt><dd>The Miocene sandstone formation that holds most Orinoco Belt oil; fluvial, nearshore-marine and tidal sands, largely unconsolidated.</dd></div>
+          <div id="term-net-pay"><dt>Net pay</dt><dd>The thickness of oil-saturated reservoir rock that can contribute flow. Faja net pay ranges from a few feet to hundreds of feet.</dd></div>
+          <div id="term-ooip"><dt>OOIP</dt><dd>Original oil in place: the oil estimated to be in the reservoir before production. It is not the same as reserves or recoverable oil.</dd></div>
+          <div id="term-technically-recoverable"><dt>Technically recoverable</dt><dd>The fraction of OOIP that existing or foreseeable technology could extract, regardless of price. It is not a production rate.</dd></div>
+          <div id="term-recovery-factor"><dt>Recovery factor</dt><dd>The fraction of OOIP that a process can recover. Cold production in the Faja is commonly single digits to low teens; thermal methods can reach several times that.</dd></div>
+          <div id="term-cold-production"><dt>Cold production</dt><dd>Producing heavy oil without adding heat, using horizontal wells, sand management and artificial lift. It is the baseline development method in the Faja.</dd></div>
+          <div id="term-horizontal-well"><dt>Horizontal well</dt><dd>A well drilled laterally through the reservoir to expose hundreds to thousands of metres of pay. Faja developments use single- and multi-lateral horizontals from pads.</dd></div>
+          <div id="term-multilateral-well"><dt>Multilateral well</dt><dd>A well with more than one lateral branch from a single main bore. It increases reservoir contact per surface location.</dd></div>
+          <div id="term-sand-control"><dt>Sand control</dt><dd>The completion design and operating practice that manages unconsolidated sand: slotted liners, screens, gravel packs or controlled sand production.</dd></div>
+          <div id="term-foamy-oil"><dt>Foamy oil</dt><dd>A cold-production flow regime in which dissolved gas comes out of solution as tiny bubbles, helping to drive viscous oil toward the well.</dd></div>
+          <div id="term-artificial-lift"><dt>Artificial lift</dt><dd>Any mechanical method that lifts fluid when the reservoir lacks enough pressure to do it. PCPs and ESPs are the main options in the Faja.</dd></div>
+          <div id="term-pcp"><dt>PCP</dt><dd>Progressing-cavity pump. A helical steel rotor turns inside an elastomer stator, forming sealed cavities that move fluid upward. It tolerates viscous, sandy fluid but is limited by elastomer temperature, gas and wear.</dd></div>
+          <div id="term-esp"><dt>ESP</dt><dd>Electrical submersible pump. A multistage centrifugal pump run on a downhole motor; it handles higher volumes but is less tolerant of sand and very high viscosity than a PCP.</dd></div>
+          <div id="term-well-pad"><dt>Well pad</dt><dd>A clustered surface location from which many directional or horizontal wells are drilled. The Faja is developed as a field of pads, not a grid of single vertical wells.</dd></div>
+          <div id="term-christmas-tree"><dt>Christmas tree</dt><dd>The assembly of valves, spools and fittings on a wellhead that controls flow.</dd></div>
+          <div id="term-css"><dt>CSS</dt><dd>Cyclic steam stimulation, or “huff and puff”: steam injection, soak, then production from the same well. The cycle repeats until the steam-oil ratio becomes uneconomic.</dd></div>
+          <div id="term-steam-flooding"><dt>Steam flooding</dt><dd>Continuous injection of steam through injector wells to drive oil toward separate producer wells.</dd></div>
+          <div id="term-hasd"><dt>HASD</dt><dd>Horizontal alternating steam drive: a steam-flood configuration with horizontal wells, studied for the Faja’s thin, heterogeneous sands.</dd></div>
+          <div id="term-sagd"><dt>SAGD</dt><dd>Steam-assisted gravity drainage: a pair of stacked horizontal wells, with steam injected into the upper well and oil draining to the lower. It requires thick pay and is not the default Faja process.</dd></div>
+          <div id="term-steam-quality"><dt>Steam quality</dt><dd>The mass fraction of steam that is vapour in a steam–water mixture. Conventional generators produce roughly 70–80% quality; high-quality pilots reach 95%+.</dd></div>
+          <div id="term-sor"><dt>SOR</dt><dd>Steam-oil ratio: barrels of steam (cold-water equivalent) consumed per barrel of oil produced. It is the thermal system’s key efficiency and emissions driver.</dd></div>
+          <div id="term-diluent"><dt>Diluent</dt><dd>A light hydrocarbon, usually naphtha or condensate, blended into extra-heavy crude to lower viscosity and meet pipeline specifications.</dd></div>
+          <div id="term-blend"><dt>Blend</dt><dd>The mixture of extra-heavy crude and diluent that is transported by pipeline. Its API gravity and viscosity are the custody-transfer specifications.</dd></div>
+          <div id="term-three-phase-separator"><dt>Three-phase separator</dt><dd>A pressure vessel that separates produced fluid into gas, oil and water.</dd></div>
+          <div id="term-water-cut"><dt>Water cut</dt><dd>The fraction of produced liquid that is water. It rises over field life and increases the load on separation and water treatment.</dd></div>
+          <div id="term-upgrader"><dt>Upgrader</dt><dd>A facility that converts extra-heavy crude or blend into a lighter, sweeter synthetic crude, typically through carbon rejection and hydrotreating.</dd></div>
+          <div id="term-delayed-coker"><dt>Delayed coker</dt><dd>A thermal cracking unit that heats resid to about 480–505 °C and deposits coke in drums, producing gas oil and lighter liquids.</dd></div>
+          <div id="term-hydrotreater"><dt>Hydrotreater</dt><dd>A catalytic unit that adds hydrogen to remove sulfur, nitrogen and metals and saturate aromatics.</dd></div>
+          <div id="term-syncrude"><dt>Syncrude</dt><dd>Synthetic crude oil produced by upgrading. One Orinoco example is a 32° API, 0.2 wt% sulfur product from an 8° API, 4.3 wt% sulfur feed.</dd></div>
+          <div id="term-merey"><dt>Merey</dt><dd>Venezuela’s heavy sour export blend, roughly 16° API; its exact properties vary with the blend.</dd></div>
+          <div id="term-carbon-intensity"><dt>Carbon intensity</dt><dd>CO₂-equivalent emissions per barrel of oil, across a defined boundary. The site uses an illustrative well-to-tank boundary and says so.</dd></div>
+          <div id="term-faja"><dt>Faja</dt><dd>Short for Faja Petrolífera del Orinoco, the Orinoco Oil Belt. Used as the project’s proper name for the subject.</dd></div>
+          <div id="term-illustrative-model"><dt>Illustrative model</dt><dd>A deterministic, bounded model that demonstrates system behaviour and trade-offs. It is not a reservoir simulator and does not predict a specific field.</dd></div>
+        </dl>
+      </section>
+
+      <section class="section sources" id="sources" aria-labelledby="sources-title">
+        <div class="section__head">
+          <p class="eyebrow"><span class="eyebrow__num">12</span> Sources</p>
+          <h2 id="sources-title">What the numbers rest on</h2>
+          <p class="section__lede">Primary and technical sources first; context next. Generated model values are illustrative and are not cited as facts.</p>
+        </div>
+        <ol class="source-list">
+          <li>
+            USGS, <em>An Estimate of Recoverable Heavy Oil Resources of the Orinoco Oil Belt, Venezuela</em>, Fact Sheet 2009–3028.
+            <a href="https://pubs.usgs.gov/fs/2009/3028/">pubs.usgs.gov/fs/2009/3028</a>
+          </li>
+          <li>
+            Kopper et al., <em>Reservoir Characterization of the Orinoco Heavy Oil Belt: Miocene Oficina Formation, Zuata Field</em>, SPE 69697.
+            <a href="https://doi.org/10.2118/69697-MS">doi.org/10.2118/69697-MS</a>
+          </li>
+          <li>
+            Fernandez &amp; Bashbush, <em>Horizontal Alternating Steam Drive Process for the Orinoco Heavy Oil Belt</em>, SPE 117689.
+            <a href="https://doi.org/10.2118/117689-MS">doi.org/10.2118/117689-MS</a>
+          </li>
+          <li>
+            <em>Producing Extra-Heavy Oil From the Orinoco Belt, Cerro Negro Area, Venezuela, Using Bottom-Drive Progressive Cavity Pumps</em>, SPE 97889.
+            <a href="https://doi.org/10.2118/97889-PA">doi.org/10.2118/97889-PA</a>
+          </li>
+          <li>
+            <em>Management and Best Practices of Progressive Cavity Pumps Failures, Huyaparí Field, Orinoco Oil Belt</em>, SPE 165061.
+            <a href="https://doi.org/10.2118/165061-MS">doi.org/10.2118/165061-MS</a>
+          </li>
+          <li>
+            <em>Increased Run Life in Progressive Cavity Pumps from Characterization of High Nitrile Elastomers in the Orinoco Oil Belt</em>, SPE 191118.
+            <a href="https://doi.org/10.2118/191118-MS">doi.org/10.2118/191118-MS</a>
+          </li>
+          <li>
+            <em>Orinoco Belt, Cerro Negro Area: Development of Downhole Diluent Injection Completions</em>, SPE 69433.
+            <a href="https://doi.org/10.2118/69433-MS">doi.org/10.2118/69433-MS</a>
+          </li>
+          <li>
+            <em>Application of Advanced Heavy-Oil-Production Technologies in the Orinoco Heavy-Oil-Belt</em>, SPE 69848.
+            <a href="https://doi.org/10.2118/69848-MS">doi.org/10.2118/69848-MS</a>
+          </li>
+          <li>
+            <em>Design of a Cyclic Steam Stimulation Pilot Test for the Orinoco Oil Belt</em>, SPE 188651.
+            <a href="https://doi.org/10.2118/188651-MS">doi.org/10.2118/188651-MS</a>
+          </li>
+          <li>
+            <em>Unveiling Success From Cyclic Steam Injections for Heavy Oil Recovery in India and the Orinoco Oil Belt</em>, SPE 218657.
+            <a href="https://doi.org/10.2118/218657-MS">doi.org/10.2118/218657-MS</a>
+          </li>
+          <li>
+            <em>Experiences with Naphthenic Acid Corrosion in an Extra Heavy Oil Upgrader Facility</em>, NACE 2006.
+            <a href="https://doi.org/10.5006/C2006-06586">doi.org/10.5006/C2006-06586</a>
+          </li>
+          <li>
+            <em>Sand Transport Modeling in Heavy Oil Gathering Network in Orinoco Oil Belt, Venezuela</em>, SPE 184968.
+            <a href="https://doi.org/10.2118/184968-MS">doi.org/10.2118/184968-MS</a>
+          </li>
+          <li>
+            Petrozuata well count and well performance from <em>Horizontal Wells Pressure Build Up Analysis in the Orinoco Heavy Oil Belt</em>, SPE 78969.
+            <a href="https://doi.org/10.2118/78969-MS">doi.org/10.2118/78969-MS</a>
+          </li>
+          <li>
+            Sand and foamy-oil behaviour from SPE 79025.
+            <a href="https://doi.org/10.2118/79025-MS">doi.org/10.2118/79025-MS</a>
+          </li>
+          <li>
+            Delayed coking process context from the public delayed-coker literature.
+            <a href="https://en.wikipedia.org/wiki/Delayed_coker">en.wikipedia.org/wiki/Delayed_coker</a>
+          </li>
+          <li>
+            OPEC, Annual Statistical Bulletin.
+            <a href="https://www.opec.org/">opec.org</a>
+          </li>
+          <li>
+            U.S. Energy Information Administration, international petroleum data and Venezuela country analysis.
+            <a href="https://www.eia.gov/international/">eia.gov/international</a>
+          </li>
+          <li>
+            International Energy Agency, oil market and country data.
+            <a href="https://www.iea.org/">iea.org</a>
+          </li>
+          <li>
+            <em>Carbon intensity of global crude oil trading and market policy implications</em>, Nature Communications 2023.
+            <a href="https://doi.org/10.1038/s41467-023-41701-z">doi.org/10.1038/s41467-023-41701-z</a>
+          </li>
+          <li>
+            Oil &amp; Gas Journal, <em>All about Orinoco</em>, for the 1936 La Canoa-1 date.
+            <a href="https://www.ogj.com/exploration-development/discoveries/article/17208966/all-about-orinoco">ogj.com</a>
+          </li>
+        </ol>
+        <p class="source-note">
+          The project’s working notes and the exact range table are in <code>docs/research/orinoco-brief.md</code>.
+          The Anatomy isometric kit is MIT-licensed; see <a href="https://github.com/gerrcass/faja-heavy-crude-sim/blob/main/NOTICE.md">NOTICE.md</a>.
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer__inner">
+        <p class="footer__mark">Faja 8°</p>
+        <p class="footer__copy">
+          A field guide to extra-heavy crude in the Orinoco Belt. No tracking, no accounts, no runtime data service.
+          Built as a static site with Vite; the figure uses the MIT-licensed Anatomy kit.
+        </p>
+        <p class="footer__meta"><a href="#top">Back to top ↑</a> · <a href="https://github.com/gerrcass/faja-heavy-crude-sim">Source</a> · MIT</p>
+      </div>
+    </footer>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
