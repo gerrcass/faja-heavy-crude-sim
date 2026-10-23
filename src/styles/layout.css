@@ -218,6 +218,8 @@ html[data-theme="dark"] .theme-toggle__dot {
   font-size: 0.58rem;
   line-height: 1.5;
   color: var(--muted-2);
+  text-align: left;
+  white-space: normal;
 }
 
 .specimen__source a {
